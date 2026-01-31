@@ -12,28 +12,50 @@
       height: 100vh;
       font-family: Arial, sans-serif;
       text-align: center;
+      overflow: hidden;
     }
+
+    img {
+      width: 250px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
     button {
       font-size: 20px;
       padding: 10px 20px;
       margin: 10px;
       cursor: pointer;
+      position: relative;
+    }
+
+    #noBtn {
+      position: absolute;
     }
   </style>
 </head>
 <body>
 
-  <h1>Will you be my Valentine? 💕</h1>
+  <img src="Formal2025.jpeg" alt="Us 💕">
 
-  <button onclick="yes()">Yes 💖</button>
-  <button onclick="no()">No 🙃</button>
+  <h1>Will you be my Valentine? 💖</h1>
+
+  <button onclick="yes()">Yes 💘</button>
+  <button id="noBtn">No 🙃</button>
 
   <script>
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
     function yes() {
-      document.body.innerHTML = "<h1>YAY!!! 💘🥰</h1><p>I can't wait ❤️</p>";
-    }
-    function no() {
-      alert("Wrong answer 😤 try again");
+      document.body.innerHTML = "<h1>YAY!!! 💘🥰</h1><p>I can’t wait ❤️</p>";
     }
   </script>
 
