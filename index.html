@@ -5,25 +5,24 @@
   <style>
     body {
       background: pink;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
       font-family: Arial, sans-serif;
       text-align: center;
-      overflow: hidden;
+      overflow: hidden; /* allows buttons to move off original spot */
+      position: relative; /* makes absolute positioning relative to body */
     }
 
     .photos {
       display: flex;
+      justify-content: center;
       gap: 20px;
-      margin-bottom: 20px;
+      margin-top: 50px;
     }
 
     img {
       width: 200px;
       border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     button {
@@ -31,15 +30,54 @@
       padding: 10px 20px;
       margin: 10px;
       cursor: pointer;
+      position: absolute;
+      top: 70%;
+    }
+
+    #yesBtn {
+      left: 40%;
+      position: absolute;
     }
 
     #noBtn {
+      left: 55%;
       position: absolute;
     }
+
   </style>
 </head>
 <body>
 
   <div class="photos">
     <img src="Formal2025.jpeg" alt="Us 💕">
-    <img src="IceSkati
+    <img src="IceSkating2025.jpeg" alt="Us ice skating 💕">
+  </div>
+
+  <h1>Will you be my Valentine? 💖</h1>
+
+  <button id="yesBtn">Yes 💘</button>
+  <button id="noBtn">No 🙃</button>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+
+    // make the No button run away
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // Yes button click
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <h1>YAY!!! 💘🥰</h1>
+        <p>I can't wait to be your Valentine ❤️</p>
+      `;
+    });
+  </script>
+
+</body>
+</html>
